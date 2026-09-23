@@ -35,7 +35,9 @@ The projects here build on each other. Working bottom-up:
 ↗ SMDA is a standalone disassembly library with a life of its own beyond code
 similarity, so it stays at
 [danielplohmann/smda](https://github.com/danielplohmann/smda). Everything here depends
-on it.
+on it. The same goes for [purepdb](https://github.com/danielplohmann/purepdb), a
+dependency-free pure-Python PDB parser that SMDA uses to label functions from
+PDB symbols. It stays next to SMDA.
 
 ---
 
