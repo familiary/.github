@@ -11,9 +11,8 @@ where the families are kept. Given an unknown sample, these tools tell you which
 known code it is related to, how strongly, and which parts of it are just library or
 compiler boilerplate.
 
-> **The repositories are moving here.** Until each one is transferred, the links
-> below point at its current home. GitHub redirects the old URLs after a transfer,
-> so existing clones, links and `git+https://` installs keep working.
+> **The repositories moved here in September 2026.** GitHub redirects the old
+> URLs, so existing clones, links and `git+https://` installs keep working.
 
 ---
 
@@ -24,13 +23,13 @@ The projects here build on each other. Working bottom-up:
 | | Project | What it does |
 |---|---|---|
 | **Disassembly** | [smda](https://github.com/danielplohmann/smda) ↗ | Minimalist recursive disassembler built on Capstone, focused on accurate function entry point detection and CFG recovery — including in memory dumps and shellcode. Emits the SMDA reports everything else consumes. |
-| **Block hashing** | [picblocks](https://github.com/danielplohmann/picblocks) | Position-independent hashing of basic blocks, used by MCRIT for unique-block matching. |
-| **Similarity engine** | [mcrit](https://github.com/danielplohmann/mcrit) | The MinHash-based Code Relationship & Investigation Toolkit. A framework for rapidly implementing *shinglers* — methods that encode properties of disassembled functions — and using them for scalable 1:N similarity estimation. Ships a REST API, a worker queue, a Python client, and a CLI. |
-| **Web frontend** | [mcritweb](https://github.com/fkie-cad/mcritweb) | Web UI for MCRIT: submitting samples, browsing families and functions, running and reviewing matching jobs. |
-| **Deployment** | [docker-mcrit](https://github.com/danielplohmann/docker-mcrit) | Fully packaged docker-compose setup — MCRIT server and workers, MongoDB, MCRITweb, NGINX. The recommended way to get started, and the only one that guarantees compatible versions across components. |
-| **Disassembler integration** | [mcrit-plugin](https://github.com/danielplohmann/mcrit-plugin) | IDA Pro plugin for querying an MCRIT server from inside your database: function and block matching, label synchronisation, dedicated result views. Installs as `mcrit-ida` via Hex-Rays' HCLI. |
-| **Reference data** | [mcrit-data](https://github.com/danielplohmann/mcrit-data) | Ready-to-import reference code and symbols for statically linked library and compiler artefacts (MSVC, MinGW, Go, Nim, aPLib, and more), so that known library code can be identified and filtered out instead of drowning your results. |
-| **Data preparation** | [lib2smda](https://github.com/danielplohmann/lib2smda) | Converts `.LIB` / `.OBJ` files into SMDA reports via IDA Pro, for building your own reference collections. |
+| **Block hashing** | [picblocks](https://github.com/familiary/picblocks) | Position-independent hashing of basic blocks, used by MCRIT for unique-block matching. |
+| **Similarity engine** | [mcrit](https://github.com/familiary/mcrit) | The MinHash-based Code Relationship & Investigation Toolkit. A framework for rapidly implementing *shinglers* — methods that encode properties of disassembled functions — and using them for scalable 1:N similarity estimation. Ships a REST API, a worker queue, a Python client, and a CLI. |
+| **Web frontend** | [mcritweb](https://github.com/familiary/mcritweb) | Web UI for MCRIT: submitting samples, browsing families and functions, running and reviewing matching jobs. |
+| **Deployment** | [docker-mcrit](https://github.com/familiary/docker-mcrit) | Fully packaged docker-compose setup — MCRIT server and workers, MongoDB, MCRITweb, NGINX. The recommended way to get started, and the only one that guarantees compatible versions across components. |
+| **Disassembler integration** | [mcrit-plugin](https://github.com/familiary/mcrit-plugin) | IDA Pro plugin for querying an MCRIT server from inside your database: function and block matching, label synchronisation, dedicated result views. Installs as `mcrit-ida` via Hex-Rays' HCLI. |
+| **Reference data** | [mcrit-data](https://github.com/familiary/mcrit-data) | Ready-to-import reference code and symbols for statically linked library and compiler artefacts (MSVC, MinGW, Go, Nim, aPLib, and more), so that known library code can be identified and filtered out instead of drowning your results. |
+| **Data preparation** | [lib2smda](https://github.com/familiary/lib2smda) | Converts `.LIB` / `.OBJ` files into SMDA reports via IDA Pro, for building your own reference collections. |
 
 ↗ SMDA is a standalone disassembly library with a life of its own beyond code
 similarity, so it stays at
@@ -46,14 +45,14 @@ PDB symbols. It stays next to SMDA.
 The fastest path to a working instance:
 
 ```bash
-git clone https://github.com/danielplohmann/docker-mcrit
+git clone https://github.com/familiary/docker-mcrit
 cd docker-mcrit
 docker compose up
 ```
 
 This builds the MCRIT server and workers plus MCRITweb, pulls MongoDB and NGINX, and
 brings everything up. From there, import a reference collection from
-[mcrit-data](https://github.com/danielplohmann/mcrit-data) via *Data → Import* in
+[mcrit-data](https://github.com/familiary/mcrit-data) via *Data → Import* in
 MCRITweb and start submitting samples.
 
 For a library-only workflow, `pip install smda` and `pip install mcrit` also work
@@ -78,7 +77,7 @@ be developed and handed on independently of any one person or institution.
 
 Issues and pull requests are welcome on the individual repositories. If you are unsure
 where something belongs, open an issue on
-[mcrit](https://github.com/danielplohmann/mcrit/issues) and we will route it.
+[mcrit](https://github.com/familiary/mcrit/issues) and we will route it.
 
 For reference data in particular: if a compiler version or library you keep running
 into is missing from mcrit-data, open an issue — ideally with the input data — and we
